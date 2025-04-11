@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Lightbulb, Leaf, SolarPanel, Server, ArrowRight, BarChart, CheckCircle, Award } from "lucide-react";
+import { Lightbulb, Flower, Sun, Server, ArrowRight, BarChart, CheckCircle, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -42,7 +42,7 @@ const Services = () => {
         features: ["Regulatory compliance", "Data collection frameworks", "Benchmarking", "Continuous improvement plans"]
       },
       {
-        icon: <Leaf size={40} className="text-greenintel-primary" />,
+        icon: <Flower size={40} className="text-greenintel-primary" />,
         title: "GHG Accounting",
         description: "Detailed carbon footprinting and reduction strategies to minimize environmental impact.",
         features: ["Scope 1-3 emissions analysis", "Carbon footprint calculation", "Reduction pathways", "Offset strategies"]
@@ -56,7 +56,7 @@ const Services = () => {
     ],
     installation: [
       {
-        icon: <SolarPanel size={40} className="text-greenintel-primary" />,
+        icon: <Sun size={40} className="text-greenintel-primary" />,
         title: "Rooftop Solar",
         description: "Full turnkey residential and commercial rooftop solar installations.",
         features: ["Residential systems", "Commercial systems", "Grid-tied solutions", "Battery storage options"]

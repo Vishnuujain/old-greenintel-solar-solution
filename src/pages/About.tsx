@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Award, CheckCircle, Target, Heart } from "lucide-react";
+import { Award, CheckCircle, Target, Heart, Flower } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -36,7 +36,7 @@ const About = () => {
       description: "Continuously pushing boundaries with AI and deep tech to drive the renewable energy sector forward."
     },
     {
-      icon: <Leaf className="h-8 w-8 text-greenintel-primary" />,
+      icon: <Flower className="h-8 w-8 text-greenintel-primary" />,
       title: "Sustainability",
       description: "Committed to environmental stewardship and promoting sustainable practices in all our work."
     },

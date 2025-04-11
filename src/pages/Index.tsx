@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { ArrowRight, BarChart, CheckCircle, Lightbulb, Server, Leaf, SolarPanel } from "lucide-react";
+import { ArrowRight, BarChart, CheckCircle, Lightbulb, Server, Flower, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -13,13 +13,13 @@ const Index = () => {
       link: "/services#consultancy"
     },
     {
-      icon: <Leaf className="text-greenintel-primary" size={28} />,
+      icon: <Flower className="text-greenintel-primary" size={28} />,
       title: "Sustainability Services",
       description: "ESG reporting, GHG accounting and materiality assessments for businesses.",
       link: "/services#sustainability"
     },
     {
-      icon: <SolarPanel className="text-greenintel-primary" size={28} />,
+      icon: <Sun className="text-greenintel-primary" size={28} />,
       title: "Installation Services",
       description: "End-to-end rooftop solar solutions and EPC services for all scales.",
       link: "/services#installation"
@@ -71,7 +71,7 @@ const Index = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-greenintel-primary to-greenintel-secondary opacity-90 rounded-xl"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center p-8">
-                    <SolarPanel size={80} className="mx-auto text-white mb-6" />
+                    <Sun size={80} className="mx-auto text-white mb-6" />
                     <h3 className="text-white text-2xl md:text-3xl font-bold mb-4">Smart Solar Solutions</h3>
                     <p className="text-white/90 max-w-md">Harnessing AI and innovation to maximize your renewable energy investments</p>
                   </div>
