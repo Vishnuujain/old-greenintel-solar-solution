@@ -30,8 +30,17 @@ const Navbar = () => {
     <nav className="bg-background border-b border-muted/50 sticky top-0 z-40 backdrop-blur-lg">
       <div className="container-custom flex items-center justify-between py-4">
         <Link to="/" className="flex items-center space-x-2">
-          <span className="bg-greenintel-primary text-white font-bold p-2 rounded-md">GI</span>
-          <span className="font-display font-bold text-xl text-greenintel-primary">GreenIntel</span>
+          <div className="lg:col-span-2">
+                 <div className="flex items-center mb-6">
+                   <img 
+                     src="../Green1.png" 
+                     alt="GreenIntel Logo" 
+                     className="bg-white h-12 w-auto object-contain rounded-sm"
+                   />
+                 </div>
+                 
+                 
+               </div>
         </Link>
 
         {/* Desktop Navigation */}
@@ -51,27 +60,13 @@ const Navbar = () => {
             <Button className="btn-primary" asChild>
               <Link to="/contact">Get Started</Link>
             </Button>
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={toggleTheme}
-              className="rounded-full"
-            >
-              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </Button>
+            
           </div>
         </div>
 
         {/* Mobile Menu Button */}
         <div className="flex md:hidden items-center space-x-4">
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={toggleTheme}
-            className="rounded-full"
-          >
-            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </Button>
+          
           <Button variant="ghost" size="icon" onClick={toggleMenu}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </Button>

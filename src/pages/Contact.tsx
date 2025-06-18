@@ -48,6 +48,14 @@ const Contact = () => {
     }, 1500);
   };
 
+  const handleSubscibe = () => {
+    toast({
+        title: "Message sent!",
+        description: "We'll get back to you as soon as possible.",
+        duration: 5000,
+      });
+  }
+
   const contactInfo = [
     {
       icon: <Phone size={24} className="text-greenintel-primary" />,
@@ -274,7 +282,7 @@ const Contact = () => {
                 placeholder="Your email address" 
                 className="bg-white border-white focus-visible:ring-greenintel-primary"
               />
-              <Button className="bg-greenintel-dark text-white hover:bg-black">
+              <Button className="bg-greenintel-dark text-white hover:bg-black" onClick={handleSubscibe}>
                 Subscribe
               </Button>
             </div>
