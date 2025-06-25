@@ -21,12 +21,13 @@ const About = () => {
       bio: "Combines environmental engineering expertise with advanced software skills to deliver data-driven sustainability solutions."
     },
     {
-      name: "Prem Bharti",
-      title: "Solar EPC Trainer & Implementer",
-      experience: "10+ years",
+      name: "Vishnu Jain",
+      title: "Technology & Energy Expert",
+      experience: "IIT Roorkee Graduate, Data Engineer",
       image: "/placeholder.svg",
-      bio: "Seasoned professional in solar EPC project management, specializing in training teams and implementing efficient solar installations."
+      bio: "Drives GreenIntel’s tech edge by integrating advanced AI solutions into renewable energy systems, enabling smarter, data-powered sustainability."
     }
+   
   ];
   
   const values = [

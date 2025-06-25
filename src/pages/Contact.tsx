@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Phone, Mail, MapPin, Send, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -24,37 +24,51 @@ const Contact = () => {
     setFormState(prev => ({ ...prev, [name]: value }));
   };
 
+  const SERVICE_ID = 'service_4cxkklr';
+  const TEMPLATE_ID = 'template_0m6v27v';
+  const PUBLIC_KEY = 'DD69hmBmJfviIe1Uf';
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      console.log("Form submitted:", formState);
+
+    try {
+      // Create form data with all fields
+      const formData = new FormData();
+      formData.append('name', formState.name);
+      formData.append('email', formState.email);
+      formData.append('phone', formState.phone);
+      formData.append('subject', formState.subject);
+      formData.append('message', formState.message);
+
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: formState.name,
+          email: formState.email,
+          phone: formState.phone,
+          subject: formState.subject,
+          message: formState.message
+        },
+        PUBLIC_KEY
+      );
+
       setIsSubmitting(false);
       setIsSubmitted(true);
-      toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
-        duration: 5000,
-      });
-      setFormState({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: ""
-      });
-    }, 1500);
-  };
+      toast({ title: "Message sent successfully!" });
+      setFormState({ name: "", email: "", phone: "", subject: "", message: "" });
 
-  const handleSubscibe = () => {
-    toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
-        duration: 5000,
+    } catch (error) {
+      console.error("Failed to send:", error);
+      toast({ 
+        title: "Error sending message", 
+        description: "Please try again later or contact us directly.", 
+        variant: "destructive" 
       });
-  }
+      setIsSubmitting(false);
+    }
+  };
 
   const contactInfo = [
     {
@@ -282,7 +296,7 @@ const Contact = () => {
                 placeholder="Your email address" 
                 className="bg-white border-white focus-visible:ring-greenintel-primary"
               />
-              <Button className="bg-greenintel-dark text-white hover:bg-black" onClick={handleSubscibe}>
+              <Button className="bg-greenintel-dark text-white hover:bg-black">
                 Subscribe
               </Button>
             </div>
