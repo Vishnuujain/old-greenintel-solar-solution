@@ -137,7 +137,8 @@ const Services = () => {
 
                 <div className="text-center mt-12">
                   <Button className="btn-primary">
-                    Request {serviceCategories.find(c => c.id === category)?.label} Services
+                    <Link to="/contact">Request {serviceCategories.find(c => c.id === category)?.label} Services</Link>
+                    
                   </Button>
                 </div>
               </TabsContent>
