@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Lightbulb, Flower, Sun, Server, ArrowRight, BarChart, CheckCircle, Award } from "lucide-react";
+import { Lightbulb, Flower, Sun, Server, ArrowRight, BarChart, CheckCircle, Award, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -55,18 +55,13 @@ const Services = () => {
       }
     ],
     installation: [
-      {
-        icon: <Sun size={40} className="text-greenintel-primary" />,
-        title: "Rooftop Solar",
-        description: "Full turnkey residential and commercial rooftop solar installations.",
-        features: ["Residential systems", "Commercial systems", "Grid-tied solutions", "Battery storage options"]
-      },
-      {
-        icon: <Award size={40} className="text-greenintel-primary" />,
-        title: "Solar EPC",
-        description: "End-to-end execution from planning to commissioning for solar projects of all sizes.",
-        features: ["Engineering", "Procurement", "Construction", "Project management"]
-      }
+       {
+        icon: <Settings size={40} className="text-greenintel-primary" />,
+        title: "Engineering and Project Management",
+        description: "From initial planning to commissioning, we deliver end-to-end solutions for projects of all sizes.",
+        features: ["Installation on rooftop", "Installation on Agriculture field", "Battery storage solar installation"]
+      }
+
     ],
     "ai-solutions": [
       {
@@ -142,7 +137,8 @@ const Services = () => {
 
                 <div className="text-center mt-12">
                   <Button className="btn-primary">
-                    Request {serviceCategories.find(c => c.id === category)?.label} Services
+                    <Link to="/contact">Request {serviceCategories.find(c => c.id === category)?.label} Services</Link>
+                    
                   </Button>
                 </div>
               </TabsContent>

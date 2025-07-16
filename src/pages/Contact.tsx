@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Phone, Mail, MapPin, Send, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -24,47 +24,69 @@ const Contact = () => {
     setFormState(prev => ({ ...prev, [name]: value }));
   };
 
+  const SERVICE_ID = 'service_4cxkklr';
+  const TEMPLATE_ID = 'template_0m6v27v';
+  const PUBLIC_KEY = 'DD69hmBmJfviIe1Uf';
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      console.log("Form submitted:", formState);
+
+    try {
+      // Create form data with all fields
+      const formData = new FormData();
+      formData.append('name', formState.name);
+      formData.append('email', formState.email);
+      formData.append('phone', formState.phone);
+      formData.append('subject', formState.subject);
+      formData.append('message', formState.message);
+
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: formState.name,
+          email: formState.email,
+          phone: formState.phone,
+          subject: formState.subject,
+          message: formState.message
+        },
+        PUBLIC_KEY
+      );
+
       setIsSubmitting(false);
       setIsSubmitted(true);
-      toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
-        duration: 5000,
+      toast({ title: "Message sent successfully!" });
+      setFormState({ name: "", email: "", phone: "", subject: "", message: "" });
+
+    } catch (error) {
+      console.error("Failed to send:", error);
+      toast({ 
+        title: "Error sending message", 
+        description: "Please try again later or contact us directly.", 
+        variant: "destructive" 
       });
-      setFormState({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: ""
-      });
-    }, 1500);
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
     {
       icon: <Phone size={24} className="text-greenintel-primary" />,
       title: "Phone",
-      details: "+91-800-123-4567",
-      link: "tel:+918001234567"
+      details: "+919079370323",
+      link: "tel:+919079370323"
     },
     {
       icon: <Mail size={24} className="text-greenintel-primary" />,
       title: "Email",
-      details: "info@greenintel.com",
-      link: "mailto:info@greenintel.com"
+      details: "admin@greenintel.in",
+      link: "mailto:admin@greenintel.in"
     },
     {
       icon: <MapPin size={24} className="text-greenintel-primary" />,
       title: "Office",
-      details: "123 Green Street, Tech Park, Bangalore 560001",
+      details: "Greater Noida, Gautam Buddha Nagar, 201318, India",
       link: "https://maps.google.com"
     }
   ];
@@ -202,19 +224,8 @@ const Contact = () => {
             </div>
 
             <div className="space-y-6">
-              <Card className="border-none shadow-md overflow-hidden">
-                <CardContent className="p-0">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497698.66087865437!2d77.35073846060442!3d12.954334865560956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1636529582320!5m2!1sen!2sin"
-                    width="100%"
-                    height="250"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    title="GreenIntel Office Location"
-                  />
-                </CardContent>
-              </Card>
+             
+
 
               <div className="bg-white rounded-xl shadow-md p-8">
                 <h3 className="text-xl font-bold mb-6">Contact Information</h3>
